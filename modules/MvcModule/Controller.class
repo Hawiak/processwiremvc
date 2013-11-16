@@ -3,6 +3,10 @@ class Controller extends Wire{
 	public $vars = array();
 	public $view_template = null;
 	private $_view_path = null;
+	public $javascript = array();
+	public $styles = array();
+	public $title = null;
+	public $layout = 'layout.php';
 
 	public function __construct(){
 	}
@@ -19,7 +23,6 @@ class Controller extends Wire{
 		if($name != null){
 			$path = $this->whoAmI() . '/' . $name . '.view';
 			if(file_exists($path)){
-				echo 'success';
 				$this->_view_path = $path;
 			}else{
 				echo 'error';
@@ -36,7 +39,6 @@ class Controller extends Wire{
 	}
 
 	private function _render_view(){
-		echo '_render_view';
 		if (is_array($this->vars) && !empty($this->vars)) {
 	        extract($this->vars);
 	    }
